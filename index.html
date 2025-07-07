@@ -254,21 +254,27 @@
                 </section>
 
                 <section>
-                    <h3>데이터 플로우</h3>
-                    <div class="mermaid">
-                        <div class="mermaid-diagram">
+                    <h3>📊 데이터 플로우 시퀀스</h3>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
                             sequenceDiagram
-                                participant App as 애플리케이션
+                                participant App as Application
                                 participant WS as WebSocket
-                                participant MCP as MCP Server
-                                participant AI as AI Model
-                                participant MSG as 메신저
+                                participant MCP as MCP_Server
+                                participant AI as AI_Model
+                                participant MSG as Messenger
 
-                                App->>WS: 에러 발생
-                                WS->>MCP: 에러 데이터 전송
-                                MCP->>AI: Sampling 요청
-                                AI->>MCP: 분석 결과
-                                MCP->>MSG: 팀 알림 전송
+                                Note over App,MSG: 10단계 실시간 에러 처리 플로우
+                                App->>WS: 1. 에러 발생
+                                WS->>MCP: 2. 에러 데이터 전송
+                                MCP->>MCP: 3. Resources 수집
+                                MCP->>AI: 4. Sampling 요청
+                                AI->>AI: 5. 컨텍스트 분석
+                                AI->>MCP: 6. 분석 결과 반환
+                                MCP->>MSG: 7. 알림 생성
+                                MSG->>MSG: 8. 메시지 포맷팅
+                                MSG-->>App: 9. 팀 알림 전송
+                                Note over App,MSG: 10. 개발팀 대응 시작
                         </div>
                     </div>
                 </section>
@@ -323,36 +329,115 @@
                 </section>
 
                 <section>
-                    <h3>실제 에러 화면</h3>
+                    <h3>🚨 실제 에러 발생 화면</h3>
                     <div class="demo-container">
-                        <div class="terminal">
-                            <pre><code class="language-javascript">
-Error: Database connection failed
-    at connectDB (/app/server.js:45)
-    at Server.start (/app/server.js:12)
-    at process.nextTick (/app/index.js:8)
-                            </code></pre>
+                        <div class="error-report">
+                            <div class="error-header">
+                                <span class="error-level">ERROR</span>
+                                <span class="error-time">2024-01-15 14:23:15</span>
+                            </div>
+                            <div class="error-details">
+                                <div class="error-field">
+                                    <strong>에러 코드:</strong> DEV02024
+                                </div>
+                                <div class="error-field">
+                                    <strong>GUID:</strong> f47ac10b-58cc-4372-a567-0e02b2c3d479
+                                </div>
+                                <div class="error-field">
+                                    <strong>사용자:</strong> admin@ontheborder.co.kr
+                                </div>
+                                <div class="error-field">
+                                    <strong>처리 유형:</strong> 온라인 주문 처리
+                                </div>
+                            </div>
+                            <div class="error-stack">
+                                <pre><code class="language-kotlin">
+org.springframework.dao.DataAccessException: 
+  데이터베이스 연결 실패 - 주문 테이블 접근 불가
+    at OrderService.processOrder(OrderService.kt:45)
+    at OrderController.createOrder(OrderController.kt:28)
+    at OrderController$createOrder$1.invoke(OrderController.kt)
+    at com.ontheborder.order.config.TransactionManager.execute(TransactionManager.kt:15)
+                                </code></pre>
+                            </div>
                         </div>
-                        <p>→ 이 에러가 자동으로 분석됩니다</p>
+                        <p class="demo-note">→ 이 에러가 MCP를 통해 자동으로 분석됩니다</p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>AI 분석 결과</h3>
-                    <div class="ai-analysis">
-                        <div class="analysis-box">
-                            <h4>🔍 에러 분석</h4>
-                            <p>데이터베이스 연결 실패</p>
-                            
-                            <h4>💡 해결책</h4>
-                            <ul>
-                                <li>DB 서버 상태 확인</li>
-                                <li>연결 문자열 검증</li>
-                                <li>네트워크 연결 확인</li>
-                            </ul>
-                            
-                            <h4>📝 권장사항</h4>
-                            <p>연결 재시도 로직 구현</p>
+                    <h3>💬 AI 분석 결과 (Slack 알림)</h3>
+                    <div class="messenger-container">
+                        <div class="slack-message">
+                            <div class="slack-header">
+                                <div class="bot-info">
+                                    <div class="bot-avatar">🤖</div>
+                                    <div class="bot-details">
+                                        <span class="bot-name">MCP Error Bot</span>
+                                        <span class="bot-time">오후 2:23</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slack-content">
+                                <div class="alert-banner">
+                                    <span class="alert-icon">🚨</span>
+                                    <strong>긴급 에러 알림 - 주문 시스템 장애</strong>
+                                </div>
+                                
+                                <div class="error-summary">
+                                    <h4>📊 에러 정보</h4>
+                                    <ul class="error-info">
+                                        <li><strong>발생 시간:</strong> 2024-01-15 14:23:15</li>
+                                        <li><strong>사용자:</strong> admin@ontheborder.co.kr</li>
+                                        <li><strong>처리 유형:</strong> 온라인 주문</li>
+                                        <li><strong>GUID:</strong> <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></li>
+                                        <li><strong>에러 코드:</strong> <code>DEV02024</code></li>
+                                    </ul>
+                                </div>
+
+                                <div class="analysis-section">
+                                    <h4>🔍 AI 분석</h4>
+                                    <p><strong>원인:</strong> 데이터베이스 연결 풀 고갈로 인한 주문 처리 실패</p>
+                                    <p><strong>영향:</strong> 고객 주문이 처리되지 않음</p>
+                                </div>
+
+                                <div class="solution-section">
+                                    <h4>⚡ 즉시 해결 방안</h4>
+                                    <ol>
+                                        <li>DB 연결 풀 상태 확인</li>
+                                        <li>주문 서비스 재시작</li>
+                                        <li>백업 DB로 전환 고려</li>
+                                    </ol>
+                                </div>
+
+                                <div class="files-section">
+                                    <h4>📁 수정 필요 파일</h4>
+                                    <div class="file-list">
+                                        <div class="file-item">
+                                            <span class="file-name">OrderService.kt:45</span>
+                                            <div class="commit-info">
+                                                <span class="committer">김철수</span>
+                                                <span class="commit-msg">"주문 처리 로직 개선"</span>
+                                                <span class="commit-time">2시간 전</span>
+                                            </div>
+                                        </div>
+                                        <div class="file-item">
+                                            <span class="file-name">TransactionManager.kt:15</span>
+                                            <div class="commit-info">
+                                                <span class="committer">이영희</span>
+                                                <span class="commit-msg">"트랜잭션 타임아웃 설정"</span>
+                                                <span class="commit-time">1일 전</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button class="btn-ack">✅ 확인함</button>
+                                    <button class="btn-assign">👥 담당자 지정</button>
+                                    <button class="btn-escalate">⬆️ 에스컬레이션</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

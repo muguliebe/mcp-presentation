@@ -63,46 +63,75 @@ class MCPSamplingProvider {
    */
   buildErrorAnalysisPrompt(errorData) {
     return `
-## 에러 정보 분석 요청
+## 온더보더 주문 시스템 에러 분석 요청
 
-### 기본 정보
-- **에러 메시지**: ${errorData.message}
+### 🚨 에러 발생 정보
+- **에러 코드**: ${errorData.errorCode || 'DEV02024'}
+- **GUID**: ${errorData.guid || 'f47ac10b-58cc-4372-a567-0e02b2c3d479'}
 - **발생 시간**: ${errorData.timestamp}
-- **에러 유형**: ${errorData.type}
-- **우선순위**: ${errorData.priority}
+- **사용자**: ${errorData.user || 'admin@ontheborder.co.kr'}
+- **처리 유형**: ${errorData.processType || '온라인 주문 처리'}
+- **배치/온라인**: ${errorData.isOnline ? '온라인' : '배치'}
 
-### 스택 트레이스
+### 📋 에러 메시지 및 스택
+\`\`\`kotlin
+${errorData.message}
+
+Stack Trace:
+${errorData.stack || `
+org.springframework.dao.DataAccessException: 
+  데이터베이스 연결 실패 - 주문 테이블 접근 불가
+    at OrderService.processOrder(OrderService.kt:45)
+    at OrderController.createOrder(OrderController.kt:28)
+    at OrderController$createOrder$1.invoke(OrderController.kt)
+    at com.ontheborder.order.config.TransactionManager.execute(TransactionManager.kt:15)
+`}
 \`\`\`
-${errorData.stack || 'No stack trace available'}
-\`\`\`
 
-### 컨텍스트 정보
-- **URL**: ${errorData.context?.url || 'N/A'}
-- **사용자 에이전트**: ${errorData.context?.userAgent || 'N/A'}
-- **세션 ID**: ${errorData.context?.sessionId || 'N/A'}
+### 🔍 시스템 컨텍스트
+- **서비스**: 주문 처리 시스템
+- **환경**: Production
+- **데이터베이스**: MySQL 8.0
+- **프레임워크**: Spring Boot 3.x + Kotlin
+- **동시 사용자**: ${errorData.concurrentUsers || '약 150명'}
 
-### 브라우저 정보
-- **브라우저**: ${errorData.browser?.userAgent || 'N/A'}
-- **화면 크기**: ${errorData.browser?.screenWidth || 0}x${errorData.browser?.screenHeight || 0}
-- **언어**: ${errorData.browser?.language || 'N/A'}
+### 📊 리소스 상태
+- **DB 연결 풀**: ${errorData.dbPoolStatus || '85% 사용 중'}
+- **메모리 사용률**: ${errorData.memoryUsage || '74%'}
+- **CPU 사용률**: ${errorData.cpuUsage || '62%'}
 
-### 성능 정보
-- **메모리 사용량**: ${errorData.performance?.memoryUsage ? JSON.stringify(errorData.performance.memoryUsage) : 'N/A'}
-- **로드 시간**: ${errorData.performance?.loadTime || 'N/A'}ms
+### 🔧 최근 변경사항
+- **OrderService.kt:45** - 김철수 (2시간 전): "주문 처리 로직 개선"
+- **TransactionManager.kt:15** - 이영희 (1일 전): "트랜잭션 타임아웃 설정"
+- **DatabaseConfig.kt:23** - 박민수 (3일 전): "커넥션 풀 최적화"
 
-### 추가 세부사항
-${errorData.details ? JSON.stringify(errorData.details, null, 2) : 'No additional details'}
+## 📋 분석 요청 항목
+다음 형식으로 Slack 알림용 응답을 생성해주세요:
 
-### 유사 에러 패턴
-${this.getSimilarErrorPatterns(errorData)}
+### 1. 📊 에러 정보 요약
+- 발생 시간, 사용자, 처리 유형, GUID, 에러 코드
 
-## 분석 요청사항
-1. 에러의 근본 원인 분석
-2. 즉시 해결할 수 있는 방법
-3. 장기적인 해결 방안
-4. 재발 방지 전략
-5. 코드 개선 제안
-6. 모니터링 강화 방안
+### 2. 🔍 AI 분석
+- 원인 분석 (구체적인 기술적 원인)
+- 비즈니스 영향도 평가
+
+### 3. ⚡ 즉시 해결 방안 (우선순위별)
+1. 긴급 조치 (5분 이내)
+2. 임시 해결 (30분 이내)  
+3. 근본 해결 (2시간 이내)
+
+### 4. 📁 수정 필요 파일 및 담당자
+- 파일명:라인번호
+- 최근 커밋한 사람
+- 커밋 메시지
+- 커밋 시간
+
+### 5. 🎯 재발 방지 전략
+- 모니터링 강화 방안
+- 코드 개선 제안
+- 인프라 최적화
+
+### 6. 📈 예상 복구 시간 및 리스크 평가
 `;
   }
 
