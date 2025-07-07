@@ -341,7 +341,7 @@
                                     <strong>에러 코드:</strong> DEV02024
                                 </div>
                                 <div class="error-field">
-                                    <strong>GUID:</strong> f47ac10b-58cc-4372-a567-0e02b2c3d479
+                                    <strong>GUID:</strong> 20250715150323223PRDOxhost007001
                                 </div>
                                 <div class="error-field">
                                     <strong>사용자:</strong> admin@ontheborder.co.kr
@@ -390,15 +390,15 @@ org.springframework.dao.DataAccessException:
                                         <li><strong>발생 시간:</strong> 2024-01-15 14:23:15</li>
                                         <li><strong>사용자:</strong> admin@ontheborder.co.kr</li>
                                         <li><strong>처리 유형:</strong> 온라인 주문</li>
-                                        <li><strong>GUID:</strong> <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></li>
+                                        <li><strong>GUID:</strong> <code>20250715150323223PRDOxhost007001</code></li>
                                         <li><strong>에러 코드:</strong> <code>DEV02024</code></li>
                                     </ul>
                                 </div>
 
                                 <div class="analysis-section">
                                     <h4>🔍 AI 분석</h4>
-                                    <p><strong>원인:</strong> 데이터베이스 연결 풀 고갈로 인한 주문 처리 실패</p>
-                                    <p><strong>영향:</strong> 고객 주문이 처리되지 않음</p>
+                                    <p><strong>원인:</strong> <code>OrderService.kt:45</code> - 커넥션 풀 타임아웃 설정 부족</p>
+                                    <p><strong>대응방안:</strong> <code>TransactionManager.kt:15</code>에서 재시도 로직 추가 필요</p>
                                 </div>
 
                                 <div class="solution-section">

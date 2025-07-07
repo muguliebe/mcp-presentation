@@ -68,15 +68,16 @@
 /* 비교 섹션 */
 .comparison {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .before, .after {
     flex: 1;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+    font-size: 0.85rem;
 }
 
 .before {
@@ -475,17 +476,17 @@
 /* 절약 하이라이트 */
 .savings-highlight {
     text-align: center;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, #00c851 0%, #007e33 100%);
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--success-color) 0%, #15803d 100%);
     color: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 200, 81, 0.3);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
 }
 
 .savings-highlight h3 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 /* MCP 기능 카드 */
@@ -548,30 +549,31 @@
 
 /* 실용적 예제 플로우 */
 .practical-examples {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
 }
 
 .example-flow {
     display: flex;
     align-items: stretch;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
 }
 
 .flow-step {
     flex: 1;
-    min-width: 250px;
+    min-width: 200px;
     background: var(--bg-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-color);
+    font-size: 0.85rem;
 }
 
 .flow-step h3 {
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
 }
 
 .flow-step ul {
@@ -603,57 +605,58 @@
 
 /* 비즈니스 가치 섹션 */
 .business-value {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
 }
 
 .value-metrics {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .metric-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     color: white;
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 1rem;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
 .metric-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 .metric-label {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
     opacity: 0.9;
 }
 
 .metric-detail {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     opacity: 0.8;
 }
 
 .roi-calculation {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 12px;
-    border-left: 4px solid var(--success-color);
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--success-color);
 }
 
 .roi-calculation h3 {
     color: var(--success-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
 }
 
 .calculation p {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
 }
 
 .calculation .highlight {
