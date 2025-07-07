@@ -1,0 +1,436 @@
+/* MCP 프레젠테이션 커스텀 스타일 */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --accent-color: #06b6d4;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --bg-light: #f8fafc;
+    --bg-dark: #1e293b;
+    --text-light: #64748b;
+    --text-dark: #1e293b;
+}
+
+.reveal {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.reveal .slides section {
+    text-align: left;
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2 {
+    text-align: center;
+}
+
+/* 타이틀 슬라이드 */
+.reveal .slides section:first-child {
+    text-align: center;
+}
+
+.qr-code {
+    margin-top: 2rem;
+}
+
+.qr-code img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hook 슬라이드 */
+.reveal .slides section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.reveal .fragment {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* 비교 섹션 */
+.comparison {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.before, .after {
+    flex: 1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.before {
+    background: #fef2f2;
+    border-left: 4px solid var(--error-color);
+}
+
+.after {
+    background: #f0fdf4;
+    border-left: 4px solid var(--success-color);
+}
+
+/* Mermaid 다이어그램 */
+.mermaid-diagram {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+/* 기술 스택 */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tech-category {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.tech-category h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.tech-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-category li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tech-category li:last-child {
+    border-bottom: none;
+}
+
+/* 데모 컨테이너 */
+.demo-container {
+    margin: 2rem 0;
+}
+
+.terminal {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    margin-bottom: 1rem;
+}
+
+.terminal pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* AI 분석 결과 */
+.ai-analysis {
+    margin: 2rem 0;
+}
+
+.analysis-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.analysis-box h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.analysis-box ul {
+    margin: 1rem 0;
+}
+
+.analysis-box li {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.analysis-box li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #fbbf24;
+}
+
+/* 메트릭스 */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.metric {
+    text-align: center;
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metric h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.metric p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.highlight {
+    color: var(--success-color);
+    font-weight: 700;
+}
+
+/* 확장 가능성 */
+.expansion {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.current, .future {
+    flex: 1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.current {
+    background: #eff6ff;
+    border-left: 4px solid var(--primary-color);
+}
+
+.future {
+    background: #f0fdf4;
+    border-left: 4px solid var(--success-color);
+}
+
+/* Q&A 섹션 */
+.qa-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-info, .resources {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.contact-info h3, .resources h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.resources ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resources li {
+    margin: 0.5rem 0;
+}
+
+.resources a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.resources a:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 최종 CTA */
+.final-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    border-radius: 12px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .comparison,
+    .expansion,
+    .qa-section {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .reveal .slides section {
+        font-size: 0.9rem;
+    }
+    
+    .reveal h1 {
+        font-size: 2rem;
+    }
+    
+    .reveal h2 {
+        font-size: 1.8rem;
+    }
+    
+    .reveal h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 코드 하이라이트 커스텀 */
+.reveal pre {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.reveal pre code {
+    max-height: 500px;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* 애니메이션 */
+.reveal .slides section .fragment {
+    transition: all 0.3s ease;
+}
+
+.reveal .slides section .fragment.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.reveal .slides section .fragment:not(.visible) {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+/* 진행 바 커스텀 */
+.reveal .progress {
+    color: var(--primary-color);
+}
+
+/* 네비게이션 커스텀 */
+.reveal .controls {
+    color: var(--primary-color);
+}
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+    border-color: var(--primary-color);
+}
+
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-down.enabled:hover {
+    border-color: var(--accent-color);
+}
+
+/* QR 코드 호버 효과 */
+.qr-code img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--text-dark);
+}
+
+/* 이모지 스타일 */
+.emoji {
+    font-size: 1.5em;
+    margin-right: 0.5rem;
+}
+
+/* 스피커 노트 숨김 (프레젠테이션 모드) */
+.reveal .speaker-notes {
+    display: none;
+}
+
+/* 인쇄 스타일 */
+@media print {
+    .reveal .slides section {
+        page-break-inside: avoid;
+    }
+    
+    .reveal .fragment {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

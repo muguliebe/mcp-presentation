@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP 에러 모니터링 시스템</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- 타이틀 슬라이드 -->
+            <section>
+                <h1>MCP 에러 모니터링 시스템</h1>
+                <h3>AI가 자동으로 에러 해결책을 제안한다면?</h3>
+                <p>
+                    <small>Model Context Protocol을 활용한 실시간 에러 분석 시스템</small>
+                </p>
+                <div class="qr-code">
+                    <img src="assets/images/qr-code.png" alt="QR Code" style="width: 200px;">
+                    <p>프레젠테이션 접속 QR</p>
+                </div>
+            </section>
+
+            <!-- Hook 슬라이드 -->
+            <section>
+                <h2>🤔 만약에...</h2>
+                <div class="fragment">
+                    <p>서버에 에러가 발생했을 때</p>
+                </div>
+                <div class="fragment">
+                    <p>AI가 자동으로 에러를 분석하고</p>
+                </div>
+                <div class="fragment">
+                    <p>해결책을 제안해준다면?</p>
+                </div>
+                <div class="fragment">
+                    <p>그리고 팀에게 즉시 알림을 보낸다면?</p>
+                </div>
+            </section>
+
+            <!-- MCP 소개 -->
+            <section>
+                <section>
+                    <h2>MCP란 무엇인가?</h2>
+                    <p>Model Context Protocol</p>
+                </section>
+                
+                <section>
+                    <h3>MCP 핵심 개념</h3>
+                    <ul>
+                        <li class="fragment"><strong>Resources:</strong> 워크스페이스 디렉터리 노출</li>
+                        <li class="fragment"><strong>Sampling:</strong> AI 모델과의 상호작용</li>
+                        <li class="fragment"><strong>Tools:</strong> 외부 시스템과 연동</li>
+                        <li class="fragment"><strong>Prompts:</strong> 사전 정의된 프롬프트</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>왜 MCP인가?</h3>
+                    <div class="comparison">
+                        <div class="before">
+                            <h4>기존 방식</h4>
+                            <ul>
+                                <li>수동 에러 확인</li>
+                                <li>개별 도구 사용</li>
+                                <li>분산된 정보</li>
+                            </ul>
+                        </div>
+                        <div class="after">
+                            <h4>MCP 활용</h4>
+                            <ul>
+                                <li>자동 에러 분석</li>
+                                <li>통합 AI 지원</li>
+                                <li>실시간 알림</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 프로젝트 아키텍처 -->
+            <section>
+                <section>
+                    <h2>프로젝트 아키텍처</h2>
+                    <div class="mermaid">
+                        <div class="mermaid-diagram">
+                            graph TD
+                                A[애플리케이션 서버] -->|에러 발생| B[WebSocket Server]
+                                B -->|실시간 전송| C[MCP Server]
+                                C -->|Resources| D[워크스페이스]
+                                C -->|Sampling| E[AI 모델]
+                                E -->|분석 결과| F[메신저 알림]
+                                G[VS Code Copilot] -->|통합| C
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>데이터 플로우</h3>
+                    <div class="mermaid">
+                        <div class="mermaid-diagram">
+                            sequenceDiagram
+                                participant App as 애플리케이션
+                                participant WS as WebSocket
+                                participant MCP as MCP Server
+                                participant AI as AI Model
+                                participant MSG as 메신저
+
+                                App->>WS: 에러 발생
+                                WS->>MCP: 에러 데이터 전송
+                                MCP->>AI: Sampling 요청
+                                AI->>MCP: 분석 결과
+                                MCP->>MSG: 팀 알림 전송
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>기술 스택</h3>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h4>Backend</h4>
+                            <ul>
+                                <li>Node.js + WebSocket</li>
+                                <li>MCP Server</li>
+                                <li>HTTPS/SSE</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>AI & Integration</h4>
+                            <ul>
+                                <li>MCP Sampling</li>
+                                <li>VS Code Copilot</li>
+                                <li>Claude API</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Notification</h4>
+                            <ul>
+                                <li>Slack/Teams</li>
+                                <li>Email</li>
+                                <li>SMS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 라이브 데모 -->
+            <section>
+                <section>
+                    <h2>라이브 데모</h2>
+                    <p>실제 시스템 작동 시연</p>
+                </section>
+
+                <section>
+                    <h3>데모 시나리오</h3>
+                    <ol>
+                        <li class="fragment">서버에 의도적으로 에러 발생</li>
+                        <li class="fragment">WebSocket을 통한 실시간 에러 감지</li>
+                        <li class="fragment">MCP Resources로 워크스페이스 접근</li>
+                        <li class="fragment">AI Sampling으로 에러 분석</li>
+                        <li class="fragment">메신저로 팀 알림 전송</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>실제 에러 화면</h3>
+                    <div class="demo-container">
+                        <div class="terminal">
+                            <pre><code class="language-javascript">
+Error: Database connection failed
+    at connectDB (/app/server.js:45)
+    at Server.start (/app/server.js:12)
+    at process.nextTick (/app/index.js:8)
+                            </code></pre>
+                        </div>
+                        <p>→ 이 에러가 자동으로 분석됩니다</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>AI 분석 결과</h3>
+                    <div class="ai-analysis">
+                        <div class="analysis-box">
+                            <h4>🔍 에러 분석</h4>
+                            <p>데이터베이스 연결 실패</p>
+                            
+                            <h4>💡 해결책</h4>
+                            <ul>
+                                <li>DB 서버 상태 확인</li>
+                                <li>연결 문자열 검증</li>
+                                <li>네트워크 연결 확인</li>
+                            </ul>
+                            
+                            <h4>📝 권장사항</h4>
+                            <p>연결 재시도 로직 구현</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 기술 구현 세부사항 -->
+            <section>
+                <section>
+                    <h2>기술 구현 세부사항</h2>
+                    <p>핵심 코드와 구현 방법</p>
+                </section>
+
+                <section>
+                    <h3>MCP Server 설정</h3>
+                    <pre><code class="language-javascript">
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+
+const server = new Server({
+  name: 'error-monitoring-server',
+  version: '1.0.0',
+});
+
+// Resources 등록
+server.setRequestHandler(ListResourcesRequestSchema, async () => {
+  return {
+    resources: [
+      {
+        uri: 'workspace://logs',
+        name: 'Error Logs',
+        description: 'Application error logs'
+      }
+    ]
+  };
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>WebSocket 에러 감지</h3>
+                    <pre><code class="language-javascript">
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  ws.on('message', async (data) => {
+    const errorData = JSON.parse(data);
+    
+    // MCP Sampling 호출
+    const analysis = await mcpClient.sampling({
+      messages: [
+        {
+          role: 'user',
+          content: `에러 분석: ${errorData.message}`
+        }
+      ]
+    });
+    
+    // 팀 알림 전송
+    await sendNotification(analysis);
+  });
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>MCP Resources 활용</h3>
+                    <pre><code class="language-javascript">
+// 워크스페이스 파일 접근
+server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
+  const { uri } = request.params;
+  
+  if (uri === 'workspace://logs') {
+    const logContent = await fs.readFile('./logs/error.log', 'utf8');
+    return {
+      contents: [
+        {
+          uri,
+          mimeType: 'text/plain',
+          text: logContent
+        }
+      ]
+    };
+  }
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>AI Sampling 구현</h3>
+                    <pre><code class="language-javascript">
+async function analyzeError(errorData) {
+  const response = await mcpClient.sampling({
+    messages: [
+      {
+        role: 'system',
+        content: '당신은 에러 분석 전문가입니다.'
+      },
+      {
+        role: 'user',
+        content: `
+에러 정보: ${errorData.message}
+스택 트레이스: ${errorData.stack}
+발생 시간: ${errorData.timestamp}
+
+이 에러를 분석하고 해결책을 제안해주세요.
+        `
+      }
+    ],
+    maxTokens: 500
+  });
+  
+  return response.content;
+}
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- 비즈니스 가치 -->
+            <section>
+                <section>
+                    <h2>비즈니스 가치</h2>
+                    <p>실제 업무에서의 효과</p>
+                </section>
+
+                <section>
+                    <h3>시간 절약</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <h4>에러 발견</h4>
+                            <p>5분 → <span class="highlight">30초</span></p>
+                        </div>
+                        <div class="metric">
+                            <h4>원인 분석</h4>
+                            <p>30분 → <span class="highlight">2분</span></p>
+                        </div>
+                        <div class="metric">
+                            <h4>팀 공유</h4>
+                            <p>수동 → <span class="highlight">자동</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>품질 향상</h3>
+                    <ul>
+                        <li class="fragment">🎯 정확한 에러 분석</li>
+                        <li class="fragment">📊 일관된 해결책 제안</li>
+                        <li class="fragment">📈 에러 패턴 학습</li>
+                        <li class="fragment">🔄 지속적인 개선</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>확장 가능성</h3>
+                    <div class="expansion">
+                        <div class="current">
+                            <h4>현재</h4>
+                            <ul>
+                                <li>에러 모니터링</li>
+                                <li>AI 분석</li>
+                                <li>팀 알림</li>
+                            </ul>
+                        </div>
+                        <div class="future">
+                            <h4>향후</h4>
+                            <ul>
+                                <li>성능 모니터링</li>
+                                <li>보안 이벤트</li>
+                                <li>자동 복구</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Q&A -->
+            <section>
+                <h2>Q&A</h2>
+                <div class="qa-section">
+                    <div class="contact-info">
+                        <h3>문의사항</h3>
+                        <p>📧 your-email@company.com</p>
+                        <p>📱 010-1234-5678</p>
+                    </div>
+                    <div class="resources">
+                        <h3>참고 자료</h3>
+                        <ul>
+                            <li><a href="https://github.com/your-repo/mcp-error-monitoring">GitHub 저장소</a></li>
+                            <li><a href="https://docs.modelcontextprotocol.com">MCP 공식 문서</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 감사 슬라이드 -->
+            <section>
+                <h1>감사합니다!</h1>
+                <p>MCP를 활용한 스마트한 에러 모니터링</p>
+                <div class="final-cta">
+                    <p>궁금한 점이 있으시면 언제든 문의해주세요!</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- QR Code Placeholder -->
+  <defs>
+    <pattern id="qr-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="white"/>
+      <rect x="0" y="0" width="10" height="10" fill="black"/>
+      <rect x="10" y="10" width="10" height="10" fill="black"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="200" fill="white" stroke="#ddd" stroke-width="2"/>
+  
+  <!-- QR Code Pattern -->
+  <rect x="20" y="20" width="160" height="160" fill="url(#qr-pattern)"/>
+  
+  <!-- Corner squares -->
+  <rect x="20" y="20" width="40" height="40" fill="black"/>
+  <rect x="25" y="25" width="30" height="30" fill="white"/>
+  <rect x="30" y="30" width="20" height="20" fill="black"/>
+  
+  <rect x="140" y="20" width="40" height="40" fill="black"/>
+  <rect x="145" y="25" width="30" height="30" fill="white"/>
+  <rect x="150" y="30" width="20" height="20" fill="black"/>
+  
+  <rect x="20" y="140" width="40" height="40" fill="black"/>
+  <rect x="25" y="145" width="30" height="30" fill="white"/>
+  <rect x="30" y="150" width="20" height="20" fill="black"/>
+  
+  <!-- Center pattern -->
+  <rect x="90" y="90" width="20" height="20" fill="black"/>
+  <rect x="92" y="92" width="16" height="16" fill="white"/>
+  <rect x="96" y="96" width="8" height="8" fill="black"/>
+  
+  <!-- Random QR pattern -->
+  <rect x="70" y="30" width="10" height="10" fill="black"/>
+  <rect x="90" y="40" width="10" height="10" fill="black"/>
+  <rect x="110" y="50" width="10" height="10" fill="black"/>
+  <rect x="130" y="60" width="10" height="10" fill="black"/>
+  
+  <rect x="30" y="70" width="10" height="10" fill="black"/>
+  <rect x="50" y="80" width="10" height="10" fill="black"/>
+  <rect x="70" y="90" width="10" height="10" fill="black"/>
+  <rect x="110" y="70" width="10" height="10" fill="black"/>
+  
+  <rect x="40" y="120" width="10" height="10" fill="black"/>
+  <rect x="60" y="130" width="10" height="10" fill="black"/>
+  <rect x="80" y="140" width="10" height="10" fill="black"/>
+  <rect x="100" y="150" width="10" height="10" fill="black"/>
+  <rect x="120" y="160" width="10" height="10" fill="black"/>
+  <rect x="140" y="170" width="10" height="10" fill="black"/>
+  
+  <!-- Text overlay -->
+  <text x="100" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Scan for Live Demo
+  </text>
+</svg>

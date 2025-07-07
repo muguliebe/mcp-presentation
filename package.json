@@ -1,0 +1,163 @@
+{
+  "name": "mcp-presentation",
+  "version": "1.0.0",
+  "description": "MCP 에러 모니터링 시스템 기술 프레젠테이션 - AI가 자동으로 에러 해결책을 제안하는 시스템",
+  "main": "index.html",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "error-monitoring",
+    "ai-analysis",
+    "presentation",
+    "reveal.js",
+    "websocket",
+    "real-time",
+    "notification-system"
+  ],
+  "author": {
+    "name": "MCP Presentation Team",
+    "email": "muguliebe@gmail.com",
+    "url": "https://github.com/muguliebe"
+  },
+  "license": "MIT",
+  "homepage": "https://muguliebe.github.io/mcp-presentation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muguliebe/mcp-presentation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/muguliebe/mcp-presentation/issues"
+  },
+  "scripts": {
+    "start": "http-server -p 8000 -c-1",
+    "dev": "http-server -p 8000 -c-1 -o",
+    "build": "npm run optimize",
+    "optimize": "npm run optimize:css && npm run optimize:js",
+    "optimize:css": "cleancss -o assets/css/custom.min.css assets/css/custom.css",
+    "optimize:js": "uglifyjs assets/js/custom.js -o assets/js/custom.min.js",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "htmlhint index.html",
+    "lint:css": "stylelint assets/css/*.css",
+    "lint:js": "eslint assets/js/*.js code-samples/*.js",
+    "test": "npm run test:syntax && npm run test:structure",
+    "test:syntax": "node -c assets/js/custom.js && echo 'JavaScript syntax valid'",
+    "test:structure": "node scripts/test-structure.js",
+    "validate": "npm run lint && npm run test",
+    "preview": "npm run build && npm start",
+    "deploy": "gh-pages -d .",
+    "clean": "rm -rf node_modules dist build-info.json",
+    "security": "npm audit",
+    "accessibility": "pa11y http://localhost:8000",
+    "lighthouse": "lighthouse http://localhost:8000 --output html --output-path lighthouse-report.html",
+    "pdf": "decktape reveal http://localhost:8000 presentation.pdf",
+    "screenshots": "node scripts/take-screenshots.js"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "gh-pages": "^6.0.0",
+    "htmlhint": "^1.1.4",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.4.0",
+    "pa11y": "^8.0.0",
+    "puppeteer": "^21.6.1",
+    "stylelint": "^15.11.0",
+    "uglify-js": "^3.17.4"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "axios": "^1.6.2",
+    "nodemailer": "^6.9.7",
+    "ws": "^8.14.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "presentation": {
+    "title": "MCP 에러 모니터링 시스템",
+    "subtitle": "AI가 자동으로 에러 해결책을 제안한다면?",
+    "duration": "40분 (Q&A 포함)",
+    "target_audience": "개발팀 리더, 시스템 아키텍트",
+    "language": "Korean",
+    "format": "reveal.js",
+    "features": [
+      "Interactive Mermaid diagrams",
+      "Syntax-highlighted code samples",
+      "Mobile-optimized design",
+      "QR code access",
+      "Live demo scenarios"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "error-monitoring-server",
+      "version": "1.0.0",
+      "capabilities": [
+        "resources",
+        "sampling",
+        "tools"
+      ]
+    },
+    "resources": [
+      {
+        "type": "logs",
+        "description": "Application error logs"
+      },
+      {
+        "type": "config",
+        "description": "Configuration files"
+      },
+      {
+        "type": "source",
+        "description": "Source code files"
+      }
+    ],
+    "tools": [
+      {
+        "name": "analyze_error",
+        "description": "Analyze error and suggest solutions"
+      },
+      {
+        "name": "send_notification",
+        "description": "Send team notifications"
+      }
+    ]
+  },
+  "deployment": {
+    "github_pages": {
+      "enabled": true,
+      "branch": "gh-pages",
+      "directory": "/"
+    },
+    "cdn": {
+      "reveal_js": "https://unpkg.com/reveal.js/dist/",
+      "mermaid": "https://unpkg.com/mermaid/dist/",
+      "highlight_js": "https://unpkg.com/reveal.js/plugin/highlight/"
+    }
+  },
+  "quality": {
+    "coverage": {
+      "statements": 85,
+      "branches": 80,
+      "functions": 85,
+      "lines": 85
+    },
+    "performance": {
+      "lighthouse_score": 90,
+      "load_time": "< 3s",
+      "first_contentful_paint": "< 1.5s"
+    },
+    "accessibility": {
+      "wcag_level": "AA",
+      "color_contrast": "4.5:1",
+      "keyboard_navigation": true
+    }
+  }
+}
