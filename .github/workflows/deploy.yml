@@ -11,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 # 동시 배포 방지
 concurrency:
@@ -102,6 +103,8 @@ jobs:
     - name: Setup Pages
       if: github.ref == 'refs/heads/main'
       uses: actions/configure-pages@v5
+      with:
+        enablement: true
       
     - name: Build presentation
       run: |
