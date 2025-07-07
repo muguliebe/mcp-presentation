@@ -84,7 +84,7 @@
     "title": "MCP 에러 모니터링 시스템",
     "subtitle": "AI가 자동으로 에러 해결책을 제안한다면?",
     "duration": "40분 (Q&A 포함)",
-    "target_audience": "개발팀 리더, 시스템 아키텍트",
+    "target_audience": "개발팀 리더, 시스템 아키텍트, DevOps 엔지니어",
     "language": "Korean",
     "format": "reveal.js",
     "features": [
