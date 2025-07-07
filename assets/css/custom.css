@@ -84,6 +84,23 @@
 }
 
 /* Mermaid 다이어그램 */
+.mermaid-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.mermaid {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    min-width: 600px;
+    max-width: 100%;
+}
+
 .mermaid-diagram {
     background: white;
     border-radius: 8px;
@@ -467,8 +484,9 @@
 
 /* MCP 기능 카드 */
 .mcp-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     margin: 2rem 0;
 }
@@ -481,6 +499,9 @@
     border-top: 4px solid var(--primary-color);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
 }
 
 .feature-card:hover {
@@ -525,8 +546,8 @@
 
 .example-flow {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: stretch;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -639,11 +660,22 @@
 /* 모바일 대응 개선 */
 @media (max-width: 768px) {
     .mcp-features {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        max-width: 100%;
+        width: 100%;
     }
     
     .example-flow {
         flex-direction: column;
+    }
+    
+    .flow-step {
+        min-width: auto;
+        width: 100%;
     }
     
     .flow-arrow {
@@ -661,6 +693,15 @@
     
     .metric-number {
         font-size: 2rem;
+    }
+    
+    .mermaid {
+        min-width: auto;
+        padding: 1rem;
+    }
+    
+    .mermaid-container {
+        overflow-x: scroll;
     }
 }
 

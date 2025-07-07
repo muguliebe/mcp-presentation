@@ -198,16 +198,16 @@
             <section>
                 <section>
                     <h2>🏗️ 전체 시스템 아키텍처</h2>
-                    <div class="mermaid">
-                        <div class="mermaid-diagram">
+                    <div class="mermaid-container">
+                        <div class="mermaid">
                             graph TD
-                                subgraph "백엔드 시스템"
+                                subgraph Backend["백엔드 시스템"]
                                     A[애플리케이션 서버] -->|에러 발생| B[에러 핸들러]
                                     B -->|WebSocket 퍼블리시| C[WebSocket 서버]
                                     C -->|SSE를 통한 HTTPS| D[HTTPS 엔드포인트]
                                 end
                                 
-                                subgraph "MCP 클라이언트"
+                                subgraph MCP["MCP 클라이언트"]
                                     E[MCP 서버] -->|WebSocket 연결| D
                                     E -->|Resources 노출| F[워크스페이스 디렉토리]
                                     F -->|로그 파일| G[error.log]
@@ -215,30 +215,30 @@
                                     F -->|문서| I[README.md]
                                 end
                                 
-                                subgraph "Visual Studio Code"
+                                subgraph VSCode["Visual Studio Code"]
                                     J[VS Code] -->|Copilot 연동| E
                                     J -->|MCP 구동| K[MCP 프로세스]
                                 end
                                 
-                                subgraph "AI 분석 시스템"
+                                subgraph AI["AI 분석 시스템"]
                                     L[Claude API] -->|Sampling 요청| M[AI 분석 엔진]
                                     E -->|에러 데이터 + 컨텍스트| L
                                     M -->|분석 결과| N[해결책 제안]
                                 end
                                 
-                                subgraph "알림 시스템"
+                                subgraph Notification["알림 시스템"]
                                     O[메신저 봇] -->|팀 알림| P[Slack/Teams]
                                     O -->|이메일 발송| Q[Email 시스템]
                                     N -->|결과 전송| O
                                 end
                                 
-                                subgraph "개발팀"
+                                subgraph Team["개발팀"]
                                     R[개발자 1] -->|알림 수신| P
                                     S[개발자 2] -->|알림 수신| P
                                     T[팀 리더] -->|알림 수신| Q
                                 end
                                 
-                                %% 플로우 연결 (1-10단계)
+                                %% 플로우 연결
                                 A -.->|1. 에러 발생| B
                                 B -.->|2. WebSocket 퍼블리시| C
                                 C -.->|3. SSE/HTTPS 전송| D
