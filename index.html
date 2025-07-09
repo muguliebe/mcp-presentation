@@ -269,58 +269,49 @@
             <!-- 프로젝트 아키텍처 -->
             <section>
                 <section>
-                    <h2>🏗️ 전체 시스템 아키텍처</h2>
+                    <h2>🏗️ 핵심 아키텍처</h2>
                     <div class="mermaid-container">
                         <div class="mermaid">
-                            graph TD
-                                subgraph Backend["백엔드 시스템"]
-                                    A[애플리케이션 서버] -->|에러 발생| B[에러 핸들러]
-                                    B -->|WebSocket 퍼블리시| C[WebSocket 서버]
-                                    C -->|SSE를 통한 HTTPS| D[HTTPS 엔드포인트]
-                                end
+                            graph LR
+                                A[🔥 에러 발생] --> B[🔌 WebSocket]
+                                B --> C[📞 MCP 서버]
+                                C --> D[🤖 AI 분석]
+                                D --> E[📢 팀 알림]
                                 
-                                subgraph MCP["MCP 클라이언트"]
-                                    E[MCP 서버] -->|WebSocket 연결| D
-                                    E -->|Resources 노출| F[워크스페이스 디렉토리]
-                                    F -->|로그 파일| G[error.log]
-                                    F -->|설정 파일| H[config.json]
-                                    F -->|문서| I[README.md]
-                                end
-                                
-                                subgraph VSCode["Visual Studio Code"]
-                                    J[VS Code] -->|Copilot 연동| E
-                                    J -->|MCP 구동| K[MCP 프로세스]
-                                end
-                                
-                                subgraph AI["AI 분석 시스템"]
-                                    L[Claude API] -->|Sampling 요청| M[AI 분석 엔진]
-                                    E -->|에러 데이터 + 컨텍스트| L
-                                    M -->|분석 결과| N[해결책 제안]
-                                end
-                                
-                                subgraph Notification["알림 시스템"]
-                                    O[메신저 봇] -->|팀 알림| P[Slack/Teams]
-                                    O -->|이메일 발송| Q[Email 시스템]
-                                    N -->|결과 전송| O
-                                end
-                                
-                                subgraph Team["개발팀"]
-                                    R[개발자 1] -->|알림 수신| P
-                                    S[개발자 2] -->|알림 수신| P
-                                    T[팀 리더] -->|알림 수신| Q
-                                end
-                                
-                                %% 플로우 연결
-                                A -.->|1. 에러 발생| B
-                                B -.->|2. WebSocket 퍼블리시| C
-                                C -.->|3. SSE/HTTPS 전송| D
-                                D -.->|4. 실시간 수신| E
-                                E -.->|5. 컨텍스트 수집| F
-                                E -.->|6. AI 분석 요청| L
-                                L -.->|7. 샘플링 실행| M
-                                M -.->|8. 해결책 생성| N
-                                N -.->|9. 알림 전송| O
-                                O -.->|10. 팀 알림| P
+                                style A fill:#fee2e2,stroke:#dc2626,stroke-width:2px
+                                style B fill:#dbeafe,stroke:#2563eb,stroke-width:2px
+                                style C fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+                                style D fill:#fef3c7,stroke:#d97706,stroke-width:2px
+                                style E fill:#f3e8ff,stroke:#9333ea,stroke-width:2px
+                        </div>
+                    </div>
+                    <div class="architecture-description">
+                        <p>📊 <strong>간단하지만 강력한 5단계 플로우</strong> - 복잡함 없이 효과적인 에러 처리</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>📊 데이터 플로우 시퀀스</h3>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            sequenceDiagram
+                                participant App as 📱 애플리케이션
+                                participant WS as 🔌 WebSocket
+                                participant MCP as 📞 MCP_Server
+                                participant AI as 🤖 AI_Model
+                                participant Team as 📢 Team_Chat
+
+                                Note over App,Team: 🚀 10단계 실시간 에러 처리 플로우
+                                App->>WS: 1. 에러 발생
+                                WS->>MCP: 2. 에러 데이터 전송
+                                MCP->>MCP: 3. Resources 수집
+                                MCP->>AI: 4. Sampling 요청
+                                AI->>AI: 5. 컨텍스트 분석
+                                AI->>MCP: 6. 분석 결과 반환
+                                MCP->>Team: 7. 알림 생성
+                                Team->>Team: 8. 메시지 포맷팅
+                                Team-->>App: 9. 팀 알림 전송
+                                Note over App,Team: 10. 개발팀 대응 시작
                         </div>
                     </div>
                 </section>

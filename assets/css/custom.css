@@ -1320,6 +1320,47 @@
     font-style: italic;
 }
 
+/* 아키텍처 설명 스타일 */
+.architecture-description {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.architecture-description p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+/* Mermaid 다이어그램 개선 */
+.mermaid-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.mermaid {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    min-width: 600px;
+    max-width: 100%;
+    border: 2px solid var(--border-color);
+}
+
+/* 시퀀스 다이어그램 특별 스타일 */
+.mermaid-container .mermaid:has(svg:contains(sequenceDiagram)) {
+    min-width: 800px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
 /* 모바일 대응 개선 */
 @media (max-width: 768px) {
     .flow-timeline {
