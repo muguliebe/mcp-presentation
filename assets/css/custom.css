@@ -944,6 +944,417 @@
     border-color: var(--warning-color) !important;
 }
 
+/* AI-MCP 아날로지 스타일 */
+.ai-mcp-analogy {
+    margin: 2rem 0;
+}
+
+.ai-mcp-analogy .analogy-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ai-mcp-analogy .analogy-box h3 {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+/* 간단한 플로우 스타일 */
+.simple-flow {
+    margin: 2rem 0;
+}
+
+.flow-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.flow-step-simple {
+    background: var(--bg-light);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    min-width: 160px;
+    max-width: 200px;
+    position: relative;
+}
+
+.step-number {
+    background: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 0.5rem;
+}
+
+.step-content h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.step-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.flow-arrow-simple {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* VS Code 통합 스타일 */
+.vscode-integration {
+    margin: 2rem 0;
+}
+
+.integration-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.benefit-box {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.benefit-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.benefit-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.benefit-box li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.benefit-box li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* 설정 가이드 스타일 */
+.setup-guide {
+    margin: 2rem 0;
+}
+
+.setup-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.setup-step {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.setup-step h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.setup-step pre {
+    background: var(--bg-dark);
+    color: #e5e7eb;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.8rem;
+}
+
+/* 데모 분할 화면 스타일 */
+.demo-split-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.demo-left, .demo-right {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.demo-left h4, .demo-right h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.error-terminal {
+    background: var(--bg-dark);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #2d3748;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ef4444; }
+.terminal-dot.yellow { background: #f59e0b; }
+.terminal-dot.green { background: #10b981; }
+
+.terminal-title {
+    color: white;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+
+.terminal-content {
+    padding: 1rem;
+    color: #e5e7eb;
+    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.terminal-content pre {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.copilot-suggestion {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.suggestion-header {
+    background: #f8fafc;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.copilot-icon {
+    font-size: 1.2rem;
+}
+
+.suggestion-content {
+    padding: 1rem;
+}
+
+.suggestion-content p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* VS Code 데모 스타일 */
+.vscode-demo {
+    margin: 2rem 0;
+}
+
+.demo-scenario {
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.scenario-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.step-icon {
+    font-size: 1.2rem;
+}
+
+.step-text {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+/* 핵심 장점 스타일 */
+.key-benefits {
+    margin: 2rem 0;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.benefit-item {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* 도입 효과 스타일 */
+.adoption-metrics {
+    margin: 2rem 0;
+}
+
+.metric-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.metric-item {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.metric-detail {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.satisfaction-note {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--success-color);
+    text-align: center;
+}
+
+.satisfaction-note p {
+    margin: 0;
+    font-style: italic;
+    color: var(--text-dark);
+}
+
+/* 기술 소개 스타일 */
+.tech-intro {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.tech-intro p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* 모바일 대응 개선 */
+@media (max-width: 768px) {
+    .flow-timeline {
+        flex-direction: column;
+    }
+    
+    .flow-arrow-simple {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .integration-benefits,
+    .setup-steps,
+    .demo-split-screen {
+        grid-template-columns: 1fr;
+    }
+    
+    .scenario-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefit-grid,
+    .metric-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .flow-step-simple {
+        max-width: 100%;
+    }
+    
+    .ai-mcp-analogy .analogy-box h3 {
+        font-size: 1.1rem;
+    }
+}
+
 /* 인쇄 스타일 */
 @media print {
     .reveal .slides section {
