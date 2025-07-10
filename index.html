@@ -429,7 +429,59 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 14. 실시간 에러 모니터링 -->
+            <!-- 14. 메신저 에러 리포팅 결과 -->
+            <section>
+                <h2><span class="emoji-large">📱</span>메신저 에러 리포팅 결과</h2>
+                
+                <div class="messenger-container">
+                    <div class="messenger-header">
+                        <h3>🔔 개발팀 알림</h3>
+                        <span class="timestamp">오늘 오후 4:23</span>
+                    </div>
+                    
+                    <div class="messenger-message">
+                        <div class="message-bot">
+                            <div class="bot-avatar">🤖</div>
+                            <div class="message-content">
+                                <h4>📊 에러 분석 리포트</h4>
+                                
+                                <div class="error-section">
+                                    <h5>📌 에러 정보</h5>
+                                    <p><strong>에러 GUID</strong>: <code>20250619163OA024Xhost038001</code></p>
+                                </div>
+                                
+                                <div class="error-section">
+                                    <h5>🔍 AI 분석 결과</h5>
+                                    <ul>
+                                        <li><strong>에러 타입</strong>: <code>org.springframework.jdbc.BadSqlGrammarException</code></li>
+                                        <li><strong>발생 위치</strong>: MyBatis 매퍼 파일 <code>/META-INF/mybatis/mapper/Mapper.xml</code> 내 <code>selectYo-Inline</code> 쿼리, <code>doTranslate</code> 메서드 (112라인)</li>
+                                        <li><strong>HTTP 요청</strong>: <code>GET /hey/doc</code></li>
+                                        <li><strong>사용자</strong>: USR0204(examUser)</li>
+                                        <li><strong>에러 메시지</strong>: PostgreSQL에서 <code>main.dmandtt</code> 컬럼이 존재하지 않는다는 오류 발생</li>
+                                        <li><strong>스택 트레이스</strong>: <code>org.postgresql.util.PSQLException: ERROR: column main.dmandtt does not exist Hint: Perhaps you meant to reference the column "main.dmandt".</code></li>
+                                        <li><strong>관련파일</strong>: mapper.xml 홍길동 25.07.05 16:23:22 쿼리 수정</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="error-section summary">
+                                    <h5>💡 요약</h5>
+                                    <p><code>/hey/doc</code> API 호출 시, MyBatis 매퍼의 SQL에서 존재하지 않는 컬럼(<code>main.dmandtt</code>)을 조회하여 SQL 문법 오류가 발생했습니다.</p>
+                                </div>
+                                
+                                <div class="message-time">방금 전</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fragment">
+                    <div class="savings-highlight">
+                        <h3><span class="emoji-large">🎯</span>30초 만에 상세한 에러 분석 완료!</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 15. 실시간 에러 모니터링 -->
             <section>
                 <h2><span class="emoji-large">🔗</span>에러 모니터링 최종 Ver.</h2>
                 
@@ -464,7 +516,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 15. 마무리 - 핵심 메시지 -->
+            <!-- 16. 마무리 - 핵심 메시지 -->
             <section>
                 <h2><span class="emoji-large">🌟</span>Insights</h2>
                 
@@ -488,7 +540,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 16. 질의응답 -->
+            <!-- 17. 질의응답 -->
             <section>
                 <h2><span class="emoji-large">💬</span>질의응답</h2>
                 

@@ -550,3 +550,158 @@ html, body {
         transform: none !important;
     }
 }
+
+/* 메신저 UI 스타일 */
+.messenger-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f8fafc;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.messenger-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.messenger-header h3 {
+    color: var(--primary-orange) !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.timestamp {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.messenger-message {
+    margin-bottom: 1rem;
+}
+
+.message-bot {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.bot-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.message-content {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    text-align: left;
+}
+
+.message-content::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #ffffff;
+}
+
+.message-content h4 {
+    color: var(--primary-orange) !important;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.error-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.error-section h5 {
+    color: var(--text-dark) !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-align: left;
+}
+
+.error-section p {
+    color: var(--text-dark) !important;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.error-section ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.error-section li {
+    color: var(--text-dark) !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+    text-align: left;
+}
+
+.error-section.summary {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-color: #f59e0b;
+}
+
+.error-section.summary h5 {
+    color: #92400e !important;
+}
+
+.error-section.summary p {
+    color: #92400e !important;
+    font-weight: 500;
+}
+
+.error-section code {
+    background: #374151;
+    color: #f9fafb;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+}
+
+.message-time {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    text-align: right;
+    font-style: italic;
+}
