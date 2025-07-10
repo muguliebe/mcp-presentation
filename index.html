@@ -218,7 +218,64 @@
                 </div>
             </section>
 
-            <!-- 8. 시나리오 - 실제 동작 과정 -->
+            <!-- 8. 에러 모니터링 시스템 시퀀스 다이어그램 -->
+            <section>
+                <h2><span class="emoji-large">🔄</span>에러 모니터링 시스템 전체 흐름</h2>
+                
+                <div class="mermaid">
+                    sequenceDiagram
+                        participant App as "백엔드 애플리케이션"
+                        participant WS as "WebSocket 서버"
+                        participant SSE as "SSE/HTTPS 엔드포인트"
+                        participant MCP as "MCP 서버"
+                        participant VSCode as "VS Code"
+                        participant AI as "Claude AI"
+                        participant Notify as "알림 시스템"
+                        participant Team as "개발팀"
+
+                        Note over App: "1. 에러 발생"
+                        App->>WS: "에러 데이터 전송"
+                        Note over WS: "api: POST /docs/1/additional-info<br/>문서 부가 정보 변경 중 에러"
+
+                        Note over WS: "2. WebSocket을 통한 에러 전파"
+                        WS->>SSE: "WebSocket 메시지 변환"
+                        
+                        Note over SSE: "3. SSE/HTTPS 스트리밍"
+                        SSE->>MCP: "실시간 에러 스트림 전송"
+                        
+                        Note over MCP: "4. MCP 서버 에러 수신"
+                        MCP->>VSCode: "에러 감지 알림"
+                        
+                        Note over MCP: "5. 컨텍스트 수집"
+                        MCP->>MCP: "Resources 접근<br/>- workspace://logs/error.log<br/>- workspace://config/app.json<br/>- workspace://docs/README.md"
+                        
+                        Note over MCP: "6. AI 분석 요청"
+                        MCP->>AI: "sampling/createMessage 호출"
+                        Note over AI: "systemPrompt:<br/>\"당신은 Spring Boot DPMS<br/>에러 분석 전문가입니다\""
+                        
+                        Note over AI: "7. 샘플링 실행"
+                        AI->>AI: "에러 분석 처리<br/>- 에러 메시지 분석<br/>- 컨텍스트 이해<br/>- 해결책 생성"
+                        
+                        Note over AI: "8. 해결책 생성"
+                        AI->>MCP: "분석 결과 반환<br/>- 원인 분석<br/>- 해결 방안<br/>- 예방 조치"
+                        
+                        Note over MCP: "9. 알림 전송"
+                        MCP->>Notify: "분석 결과 전달"
+                        
+                        Note over Notify: "10. 팀 알림"
+                        Notify->>Team: "메신저 알림 발송<br/>- 에러 요약<br/>- 해결책 제안<br/>- 우선순위 안내"
+
+                        Note over Team: "전체 프로세스 완료<br/>⏱️ 소요 시간: 30초 ~ 1분"
+                </div>
+                
+                <div class="fragment">
+                    <div class="savings-highlight">
+                        <h3><span class="emoji-large">⚡</span>30초 만에 에러 분석부터 팀 알림까지 완료!</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. 시나리오 - 실제 동작 과정 -->
             <section>
                 <h2><span class="emoji-large">🎬</span>흐름별 핵심 코드</h2>
                 
@@ -247,7 +304,7 @@
                 </div>
             </section>
 
-            <!-- 9. 핵심 코드 예제 1 - Tools 정의 -->
+            <!-- 10. 핵심 코드 예제 1 - Tools 정의 -->
             <section>
                 <h2><span class="emoji-large">🛠️</span>1단계: AI가 사용할 도구들 정의</h2>
                 
@@ -277,7 +334,7 @@ this.server.setRequestHandler(ListToolsRequestSchema, async () => {
                 </div>
             </section>
 
-            <!-- 10. 핵심 코드 예제 2 - 함수 매핑 -->
+            <!-- 11. 핵심 코드 예제 2 - 함수 매핑 -->
             <section>
                 <h2><span class="emoji-large">🔗</span>2단계: 각 도구별 실제 함수 연결</h2>
                 
@@ -303,7 +360,7 @@ this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 </div>
             </section>
 
-            <!-- 11. 핵심 코드 예제 3 - AI 분석 -->
+            <!-- 12. 핵심 코드 예제 3 - AI 분석 -->
             <section>
                 <h2><span class="emoji-large">🤖</span>3단계: AI에게 분석 요청</h2>
                 
@@ -335,7 +392,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 12. 3단계 통합 흐름 요약 -->
+            <!-- 13. 3단계 통합 흐름 요약 -->
             <section>
                 <h2><span class="emoji-large">🎯</span>흐름 요약</h2>
                 
@@ -372,7 +429,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 13. 실시간 에러 모니터링 -->
+            <!-- 14. 실시간 에러 모니터링 -->
             <section>
                 <h2><span class="emoji-large">🔗</span>에러 모니터링 최종 Ver.</h2>
                 
@@ -407,7 +464,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 14. 마무리 - 핵심 메시지 -->
+            <!-- 15. 마무리 - 핵심 메시지 -->
             <section>
                 <h2><span class="emoji-large">🌟</span>Insights</h2>
                 
@@ -431,7 +488,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                 </div>
             </section>
 
-            <!-- 15. 질의응답 -->
+            <!-- 16. 질의응답 -->
             <section>
                 <h2><span class="emoji-large">💬</span>질의응답</h2>
                 
