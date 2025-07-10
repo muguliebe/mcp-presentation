@@ -1,10 +1,10 @@
 // MCP 프레젠테이션 JavaScript 설정
 
-// Mermaid 라이브러리 로드 확인 및 초기화
-function initMermaid() {
+// Mermaid 초기화 (더 간단한 방법)
+document.addEventListener('DOMContentLoaded', function () {
     if (typeof mermaid !== 'undefined') {
         mermaid.initialize({
-            startOnLoad: false,
+            startOnLoad: true,
             theme: 'base',
             themeVariables: {
                 primaryColor: '#ea580c',
@@ -20,11 +20,6 @@ function initMermaid() {
                 mainBkg: '#ffffff',
                 secondBkg: '#f8fafc',
                 tertiaryBkg: '#fef2f2',
-            },
-            flowchart: {
-                useMaxWidth: true,
-                htmlLabels: true,
-                curve: 'basis',
             },
             sequence: {
                 diagramMarginX: 50,
@@ -44,34 +39,12 @@ function initMermaid() {
             },
         })
 
-        // 수동으로 렌더링
-        renderMermaidDiagrams()
-    } else {
-        // mermaid가 아직 로드되지 않았으면 100ms 후 다시 시도
-        setTimeout(initMermaid, 100)
+        // 초기 렌더링
+        setTimeout(() => {
+            mermaid.init(undefined, '.mermaid, .mermaid-large')
+        }, 1000)
     }
-}
-
-// Mermaid 다이어그램 렌더링 함수
-async function renderMermaidDiagrams() {
-    const diagrams = document.querySelectorAll('.mermaid, .mermaid-large')
-
-    for (let i = 0; i < diagrams.length; i++) {
-        const diagram = diagrams[i]
-        const id = `mermaid-${i}`
-
-        try {
-            const { svg } = await mermaid.render(id, diagram.textContent)
-            diagram.innerHTML = svg
-        } catch (error) {
-            console.error('Mermaid rendering error:', error)
-            diagram.innerHTML = `<p style="color: red;">다이어그램 렌더링 오류: ${error.message}</p>`
-        }
-    }
-}
-
-// Mermaid 초기화 호출
-initMermaid()
+})
 
 // Reveal.js 초기화
 Reveal.initialize({
@@ -156,9 +129,9 @@ document.addEventListener('DOMContentLoaded', function () {
     Reveal.addEventListener('ready', function () {
         setTimeout(() => {
             if (typeof mermaid !== 'undefined') {
-                renderMermaidDiagrams()
+                mermaid.init(undefined, '.mermaid, .mermaid-large')
             }
-        }, 200)
+        }, 500)
     })
 
     // 슬라이드 변경 시 이벤트
@@ -182,9 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (event.currentSlide.querySelector('.mermaid') || event.currentSlide.querySelector('.mermaid-large')) {
             setTimeout(() => {
                 if (typeof mermaid !== 'undefined') {
-                    renderMermaidDiagrams()
+                    mermaid.init(undefined, event.currentSlide.querySelectorAll('.mermaid, .mermaid-large'))
                 }
-            }, 100)
+            }, 200)
         }
     })
 
