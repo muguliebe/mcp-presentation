@@ -4,7 +4,7 @@
 function initMermaid() {
     if (typeof mermaid !== 'undefined') {
         mermaid.initialize({
-            startOnLoad: true,
+            startOnLoad: false,
             theme: 'base',
             themeVariables: {
                 primaryColor: '#ea580c',
@@ -42,27 +42,31 @@ function initMermaid() {
                 rightAngles: false,
                 showSequenceNumbers: false,
             },
-            gantt: {
-                titleTopMargin: 25,
-                barHeight: 20,
-                fontFamily: 'Noto Sans KR, Apple SD Gothic Neo, sans-serif',
-                fontSize: 12,
-                fontWeight: 'normal',
-                gridLineStartPadding: 35,
-                bottomPadding: 50,
-                leftPadding: 75,
-                topPadding: 50,
-                rightPadding: 75,
-            },
         })
 
-        // 초기 렌더링
-        setTimeout(() => {
-            mermaid.init(undefined, document.querySelectorAll('.mermaid, .mermaid-large'))
-        }, 100)
+        // 수동으로 렌더링
+        renderMermaidDiagrams()
     } else {
         // mermaid가 아직 로드되지 않았으면 100ms 후 다시 시도
         setTimeout(initMermaid, 100)
+    }
+}
+
+// Mermaid 다이어그램 렌더링 함수
+async function renderMermaidDiagrams() {
+    const diagrams = document.querySelectorAll('.mermaid, .mermaid-large')
+
+    for (let i = 0; i < diagrams.length; i++) {
+        const diagram = diagrams[i]
+        const id = `mermaid-${i}`
+
+        try {
+            const { svg } = await mermaid.render(id, diagram.textContent)
+            diagram.innerHTML = svg
+        } catch (error) {
+            console.error('Mermaid rendering error:', error)
+            diagram.innerHTML = `<p style="color: red;">다이어그램 렌더링 오류: ${error.message}</p>`
+        }
     }
 }
 
@@ -152,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Reveal.addEventListener('ready', function () {
         setTimeout(() => {
             if (typeof mermaid !== 'undefined') {
-                mermaid.init(undefined, document.querySelectorAll('.mermaid, .mermaid-large'))
+                renderMermaidDiagrams()
             }
         }, 200)
     })
@@ -177,7 +181,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mermaid 다이어그램 재렌더링
         if (event.currentSlide.querySelector('.mermaid') || event.currentSlide.querySelector('.mermaid-large')) {
             setTimeout(() => {
-                mermaid.init(undefined, event.currentSlide.querySelectorAll('.mermaid, .mermaid-large'))
+                if (typeof mermaid !== 'undefined') {
+                    renderMermaidDiagrams()
+                }
             }, 100)
         }
     })
