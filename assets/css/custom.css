@@ -553,21 +553,24 @@ html, body {
 
 /* 메신저 UI 스타일 */
 .messenger-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     background: #f8fafc;
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
+    padding: 1.2rem;
     font-family: 'Noto Sans KR', sans-serif;
+    max-height: 65vh;
+    overflow-y: auto;
+    transform: scale(0.9);
 }
 
 .messenger-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
     border-bottom: 1px solid #e2e8f0;
 }
 
@@ -611,7 +614,7 @@ html, body {
     flex: 1;
     background: #ffffff;
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border: 1px solid #e2e8f0;
     position: relative;
@@ -639,18 +642,18 @@ html, body {
 }
 
 .error-section {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
 }
 
 .error-section h5 {
     color: var(--text-dark) !important;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     text-align: left;
 }
 
@@ -669,9 +672,9 @@ html, body {
 
 .error-section li {
     color: var(--text-dark) !important;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
     text-align: left;
 }
 
@@ -692,9 +695,9 @@ html, body {
 .error-section code {
     background: #374151;
     color: #f9fafb;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.85em;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.8em;
     font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
 }
 
@@ -704,4 +707,20 @@ html, body {
     margin-top: 1rem;
     text-align: right;
     font-style: italic;
+}
+
+/* 메신저 UI 반응형 */
+@media (max-width: 768px) {
+    .messenger-container {
+        transform: scale(0.8);
+        max-height: 55vh;
+    }
+    
+    .error-section li {
+        font-size: 0.85rem;
+    }
+    
+    .message-content {
+        padding: 1rem;
+    }
 }

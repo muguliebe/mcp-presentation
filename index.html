@@ -453,19 +453,19 @@ const response = await this.server.request(samplingRequest);</code></pre>
                                 <div class="error-section">
                                     <h5>🔍 AI 분석 결과</h5>
                                     <ul>
-                                        <li><strong>에러 타입</strong>: <code>org.springframework.jdbc.BadSqlGrammarException</code></li>
-                                        <li><strong>발생 위치</strong>: MyBatis 매퍼 파일 <code>/META-INF/mybatis/mapper/Mapper.xml</code> 내 <code>selectYo-Inline</code> 쿼리, <code>doTranslate</code> 메서드 (112라인)</li>
+                                        <li><strong>에러 타입</strong>: <code>BadSqlGrammarException</code></li>
+                                        <li><strong>발생 위치</strong>: MyBatis 매퍼 <code>selectYo-Inline</code> 쿼리 (112라인)</li>
                                         <li><strong>HTTP 요청</strong>: <code>GET /hey/doc</code></li>
                                         <li><strong>사용자</strong>: USR0204(examUser)</li>
-                                        <li><strong>에러 메시지</strong>: PostgreSQL에서 <code>main.dmandtt</code> 컬럼이 존재하지 않는다는 오류 발생</li>
-                                        <li><strong>스택 트레이스</strong>: <code>org.postgresql.util.PSQLException: ERROR: column main.dmandtt does not exist Hint: Perhaps you meant to reference the column "main.dmandt".</code></li>
-                                        <li><strong>관련파일</strong>: mapper.xml 홍길동 25.07.05 16:23:22 쿼리 수정</li>
+                                        <li><strong>에러 메시지</strong>: PostgreSQL 컬럼 <code>main.dmandtt</code> 존재하지 않음</li>
+                                        <li><strong>힌트</strong>: <code>"main.dmandt"</code> 컬럼명 오타 가능성</li>
+                                        <li><strong>관련파일</strong>: mapper.xml (홍길동 25.07.05 16:23:22 수정)</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="error-section summary">
                                     <h5>💡 요약</h5>
-                                    <p><code>/hey/doc</code> API 호출 시, MyBatis 매퍼의 SQL에서 존재하지 않는 컬럼(<code>main.dmandtt</code>)을 조회하여 SQL 문법 오류가 발생했습니다.</p>
+                                    <p><code>/hey/doc</code> API 호출 시, MyBatis 매퍼의 SQL에서 존재하지 않는 컬럼(<code>main.dmandtt</code>)을 조회하여 SQL 문법 오류 발생. 컬럼명 오타 확인 필요.</p>
                                 </div>
                                 
                                 <div class="message-time">방금 전</div>
