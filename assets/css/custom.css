@@ -427,6 +427,65 @@ html, body {
     font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif !important;
 }
 
+/* Large Mermaid 다이어그램 스타일 */
+.mermaid-large {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border-radius: 24px !important;
+    padding: 2rem !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 3px solid rgba(234, 88, 12, 0.2) !important;
+    margin: 2rem auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif !important;
+    transform: scale(1.1) !important;
+    transform-origin: center !important;
+    min-height: 600px !important;
+}
+
+/* Mermaid 내부 요소 크기 조정 */
+.mermaid-large svg {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 100% !important;
+}
+
+.mermaid-large .sequenceDiagram {
+    font-size: 14px !important;
+}
+
+.mermaid-large text {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+.mermaid-large .actor {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.mermaid-large .note {
+    font-size: 12px !important;
+}
+
+/* 반응형 mermaid-large */
+@media (max-width: 768px) {
+    .mermaid-large {
+        transform: scale(0.9) !important;
+        padding: 1.5rem !important;
+        min-height: 500px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mermaid-large {
+        transform: scale(0.8) !important;
+        padding: 1rem !important;
+        min-height: 400px !important;
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .reveal .slides section {
