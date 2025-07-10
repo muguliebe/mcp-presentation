@@ -431,27 +431,24 @@ const response = await this.server.request(samplingRequest);</code></pre>
 
             <!-- 14. 메신저 에러 리포팅 결과 -->
             <section>
-                <h2><span class="emoji-large">📱</span>메신저 에러 리포팅 결과</h2>
+                <h2><span class="emoji-large">📱</span>메신저 에러 리포팅</h2>
                 
                 <div class="messenger-container">
                     <div class="messenger-header">
                         <h3>🔔 개발팀 알림</h3>
-                        <span class="timestamp">오늘 오후 4:23</span>
+                        <span class="timestamp">16:23:32</span>
                     </div>
                     
                     <div class="messenger-message">
                         <div class="message-bot">
-                            <div class="bot-avatar">🤖</div>
                             <div class="message-content">
-                                <h4>📊 에러 분석 리포트</h4>
-                                
                                 <div class="error-section">
-                                    <h5>📌 에러 정보</h5>
+                                    <h5>에러 정보</h5>
                                     <p><strong>에러 GUID</strong>: <code>20250619163OA024Xhost038001</code></p>
                                 </div>
                                 
                                 <div class="error-section">
-                                    <h5>🔍 AI 분석 결과</h5>
+                                    <h5>AI 분석 결과</h5>
                                     <ul>
                                         <li><strong>에러 타입</strong>: <code>BadSqlGrammarException</code></li>
                                         <li><strong>발생 위치</strong>: MyBatis 매퍼 <code>selectYo-Inline</code> 쿼리 (112라인)</li>
@@ -464,21 +461,15 @@ const response = await this.server.request(samplingRequest);</code></pre>
                                 </div>
                                 
                                 <div class="error-section summary">
-                                    <h5>💡 요약</h5>
+                                    <h5>요약</h5>
                                     <p><code>/hey/doc</code> API 호출 시, MyBatis 매퍼의 SQL에서 존재하지 않는 컬럼(<code>main.dmandtt</code>)을 조회하여 SQL 문법 오류 발생. 컬럼명 오타 확인 필요.</p>
                                 </div>
                                 
-                                <div class="message-time">방금 전</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="fragment">
-                    <div class="savings-highlight">
-                        <h3><span class="emoji-large">🎯</span>30초 만에 상세한 에러 분석 완료!</h3>
-                    </div>
-                </div>
             </section>
 
             <!-- 15. 실시간 에러 모니터링 -->
