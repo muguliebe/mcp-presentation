@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 초기 렌더링
         setTimeout(() => {
-            mermaid.init(undefined, '.mermaid, .mermaid-large')
+            mermaid.init(undefined, '.mermaid, .mermaid-large, pre.mermaid')
         }, 1000)
     }
 })
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     Reveal.addEventListener('ready', function () {
         setTimeout(() => {
             if (typeof mermaid !== 'undefined') {
-                mermaid.init(undefined, '.mermaid, .mermaid-large')
+                mermaid.init(undefined, '.mermaid, .mermaid-large, pre.mermaid')
             }
         }, 500)
     })
@@ -152,10 +152,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Mermaid 다이어그램 재렌더링
-        if (event.currentSlide.querySelector('.mermaid') || event.currentSlide.querySelector('.mermaid-large')) {
+        if (event.currentSlide.querySelector('.mermaid') || event.currentSlide.querySelector('.mermaid-large') || event.currentSlide.querySelector('pre.mermaid')) {
             setTimeout(() => {
                 if (typeof mermaid !== 'undefined') {
-                    mermaid.init(undefined, event.currentSlide.querySelectorAll('.mermaid, .mermaid-large'))
+                    mermaid.init(undefined, event.currentSlide.querySelectorAll('.mermaid, .mermaid-large, pre.mermaid'))
                 }
             }, 200)
         }

@@ -19,9 +19,6 @@
 
         <!-- 커스텀 CSS -->
         <link rel="stylesheet" href="assets/css/custom.css" />
-
-        <!-- Mermaid -->
-        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
     </head>
     <body>
         <div class="reveal">
@@ -221,15 +218,51 @@
                 <section>
                     <h2><span class="emoji-large">🔄</span>전체 흐름 요약</h2>
 
-                    <div class="mermaid-large">
-                        sequenceDiagram participant App as "백엔드 애플리케이션" participant WS as "WebSocket 서버" participant SSE as "SSE/HTTPS 엔드포인트" participant MCP as "MCP 서버" participant VSCode as "VS Code" participant AI as
-                        "Claude AI" participant Notify as "알림 시스템" participant Team as "개발팀" Note over App: "1. 에러 발생" App->>WS: "에러 데이터 전송" Note over WS: "api: POST /docs/1/additional-info<br />문서 부가 정보 변경 중
-                        에러" Note over WS: "2. WebSocket을 통한 에러 전파" WS->>SSE: "WebSocket 메시지 변환" Note over SSE: "3. SSE/HTTPS 스트리밍" SSE->>MCP: "실시간 에러 스트림 전송" Note over MCP: "4. MCP 서버 에러 수신" MCP->>VSCode:
-                        "에러 감지 알림" Note over MCP: "5. 컨텍스트 수집" MCP->>MCP: "Resources 접근<br />- workspace://logs/error.log<br />- workspace://config/app.json<br />- workspace://docs/README.md" Note over MCP: "6. AI 분석 요청"
-                        MCP->>AI: "sampling/createMessage 호출" Note over AI: "systemPrompt:<br />\"당신은 Spring Boot DPMS<br />에러 분석 전문가입니다\"" Note over AI: "7. 샘플링 실행" AI->>AI: "에러 분석 처리<br />- 에러 메시지 분석<br />-
-                        컨텍스트 이해<br />- 해결책 생성" Note over AI: "8. 해결책 생성" AI->>MCP: "분석 결과 반환<br />- 원인 분석<br />- 해결 방안<br />- 예방 조치" Note over MCP: "9. 알림 전송" MCP->>Notify: "분석 결과 전달" Note over
-                        Notify: "10. 팀 알림" Notify->>Team: "메신저 알림 발송<br />- 에러 요약<br />- 해결책 제안<br />- 우선순위 안내" Note over Team: "전체 프로세스 완료<br />⏱️ 소요 시간: 30초 ~ 1분"
-                    </div>
+                    <pre class="mermaid">
+sequenceDiagram
+    participant App as "백엔드 애플리케이션"
+    participant WS as "WebSocket 서버"
+    participant SSE as "SSE/HTTPS 엔드포인트"
+    participant MCP as "MCP 서버"
+    participant VSCode as "VS Code"
+    participant AI as "Claude AI"
+    participant Notify as "알림 시스템"
+    participant Team as "개발팀"
+
+    Note over App: "1. 에러 발생"
+    App->>WS: "에러 데이터 전송"
+    Note over WS: "api: POST /docs/1/additional-info<br/>문서 부가 정보 변경 중 에러"
+
+    Note over WS: "2. WebSocket을 통한 에러 전파"
+    WS->>SSE: "WebSocket 메시지 변환"
+    
+    Note over SSE: "3. SSE/HTTPS 스트리밍"
+    SSE->>MCP: "실시간 에러 스트림 전송"
+    
+    Note over MCP: "4. MCP 서버 에러 수신"
+    MCP->>VSCode: "에러 감지 알림"
+    
+    Note over MCP: "5. 컨텍스트 수집"
+    MCP->>MCP: "Resources 접근<br/>- workspace://logs/error.log<br/>- workspace://config/app.json<br/>- workspace://docs/README.md"
+    
+    Note over MCP: "6. AI 분석 요청"
+    MCP->>AI: "sampling/createMessage 호출"
+    Note over AI: "systemPrompt:<br/>\"당신은 Spring Boot DPMS<br/>에러 분석 전문가입니다\""
+    
+    Note over AI: "7. 샘플링 실행"
+    AI->>AI: "에러 분석 처리<br/>- 에러 메시지 분석<br/>- 컨텍스트 이해<br/>- 해결책 생성"
+    
+    Note over AI: "8. 해결책 생성"
+    AI->>MCP: "분석 결과 반환<br/>- 원인 분석<br/>- 해결 방안<br/>- 예방 조치"
+    
+    Note over MCP: "9. 알림 전송"
+    MCP->>Notify: "분석 결과 전달"
+    
+    Note over Notify: "10. 팀 알림"
+    Notify->>Team: "메신저 알림 발송<br/>- 에러 요약<br/>- 해결책 제안<br/>- 우선순위 안내"
+
+    Note over Team: "전체 프로세스 완료<br/>⏱️ 소요 시간: 30초 ~ 1분"
+                    </pre>
                 </section>
 
                 <!-- 9. 시나리오 - 실제 동작 과정 -->
@@ -503,7 +536,14 @@ const response = await this.server.request(samplingRequest);</code></pre>
         <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
 
-        <!-- 커스텀 JavaScript -->
+        <!-- Mermaid JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+
+        <!-- Prism.js for syntax highlighting -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+        <!-- Custom JavaScript (마지막에 로드) -->
         <script src="assets/js/custom.js"></script>
     </body>
 </html>

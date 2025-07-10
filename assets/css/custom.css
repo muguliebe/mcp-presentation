@@ -486,6 +486,49 @@ html, body {
     }
 }
 
+/* pre 태그로 감싼 Mermaid 다이어그램 */
+pre.mermaid {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border-radius: 24px !important;
+    padding: 2rem !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 3px solid rgba(234, 88, 12, 0.2) !important;
+    margin: 2rem auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif !important;
+    transform: scale(1.1) !important;
+    transform-origin: center !important;
+    min-height: 600px !important;
+    white-space: pre !important;
+    text-align: left !important;
+}
+
+/* pre.mermaid 내부 SVG 스타일 */
+pre.mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 100% !important;
+}
+
+/* 반응형 pre.mermaid */
+@media (max-width: 768px) {
+    pre.mermaid {
+        transform: scale(0.9) !important;
+        padding: 1.5rem !important;
+        min-height: 500px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    pre.mermaid {
+        transform: scale(0.8) !important;
+        padding: 1rem !important;
+        min-height: 400px !important;
+    }
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .reveal .slides section {
