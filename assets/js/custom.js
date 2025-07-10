@@ -1,58 +1,73 @@
 // MCP 프레젠테이션 JavaScript 설정
 
-// Mermaid 초기화
-mermaid.initialize({
-    startOnLoad: true,
-    theme: 'base',
-    themeVariables: {
-        primaryColor: '#ea580c',
-        primaryTextColor: '#1e293b',
-        primaryBorderColor: '#ea580c',
-        lineColor: '#64748b',
-        sectionBkgColor: '#f8fafc',
-        altSectionBkgColor: '#ffffff',
-        gridColor: '#e2e8f0',
-        secondaryColor: '#f97316',
-        tertiaryColor: '#fb923c',
-        background: '#ffffff',
-        mainBkg: '#ffffff',
-        secondBkg: '#f8fafc',
-        tertiaryBkg: '#fef2f2',
-    },
-    flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis',
-    },
-    sequence: {
-        diagramMarginX: 50,
-        diagramMarginY: 10,
-        actorMargin: 50,
-        width: 150,
-        height: 65,
-        boxMargin: 10,
-        boxTextMargin: 5,
-        noteMargin: 10,
-        messageMargin: 35,
-        mirrorActors: true,
-        bottomMarginAdj: 1,
-        useMaxWidth: true,
-        rightAngles: false,
-        showSequenceNumbers: false,
-    },
-    gantt: {
-        titleTopMargin: 25,
-        barHeight: 20,
-        fontFamily: 'Noto Sans KR, Apple SD Gothic Neo, sans-serif',
-        fontSize: 12,
-        fontWeight: 'normal',
-        gridLineStartPadding: 35,
-        bottomPadding: 50,
-        leftPadding: 75,
-        topPadding: 50,
-        rightPadding: 75,
-    },
-})
+// Mermaid 라이브러리 로드 확인 및 초기화
+function initMermaid() {
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ea580c',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#ea580c',
+                lineColor: '#64748b',
+                sectionBkgColor: '#f8fafc',
+                altSectionBkgColor: '#ffffff',
+                gridColor: '#e2e8f0',
+                secondaryColor: '#f97316',
+                tertiaryColor: '#fb923c',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#fef2f2',
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35,
+                mirrorActors: true,
+                bottomMarginAdj: 1,
+                useMaxWidth: true,
+                rightAngles: false,
+                showSequenceNumbers: false,
+            },
+            gantt: {
+                titleTopMargin: 25,
+                barHeight: 20,
+                fontFamily: 'Noto Sans KR, Apple SD Gothic Neo, sans-serif',
+                fontSize: 12,
+                fontWeight: 'normal',
+                gridLineStartPadding: 35,
+                bottomPadding: 50,
+                leftPadding: 75,
+                topPadding: 50,
+                rightPadding: 75,
+            },
+        })
+
+        // 초기 렌더링
+        setTimeout(() => {
+            mermaid.init(undefined, document.querySelectorAll('.mermaid, .mermaid-large'))
+        }, 100)
+    } else {
+        // mermaid가 아직 로드되지 않았으면 100ms 후 다시 시도
+        setTimeout(initMermaid, 100)
+    }
+}
+
+// Mermaid 초기화 호출
+initMermaid()
 
 // Reveal.js 초기화
 Reveal.initialize({
@@ -133,10 +148,14 @@ Reveal.initialize({
 
 // 발표 최적화 기능들
 document.addEventListener('DOMContentLoaded', function () {
-    // 초기 Mermaid 다이어그램 렌더링
-    setTimeout(() => {
-        mermaid.init(undefined, document.querySelectorAll('.mermaid, .mermaid-large'))
-    }, 500)
+    // Reveal.js 준비 완료 후 Mermaid 다시 렌더링
+    Reveal.addEventListener('ready', function () {
+        setTimeout(() => {
+            if (typeof mermaid !== 'undefined') {
+                mermaid.init(undefined, document.querySelectorAll('.mermaid, .mermaid-large'))
+            }
+        }, 200)
+    })
 
     // 슬라이드 변경 시 이벤트
     Reveal.addEventListener('slidechanged', function (event) {
