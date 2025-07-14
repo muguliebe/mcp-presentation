@@ -213,7 +213,29 @@
                     </div>
                 </section>
 
-                <!-- 8. 에러 모니터링 시스템 시퀀스 다이어그램 -->
+                <!-- 8. MCP 시연 동영상 -->
+                <section>
+                    <h2><span class="emoji-large">🎬</span>MCP 활용</h2>
+
+                    <div class="video-wrapper">
+                        <div style="padding: 56.25% 0 0 0; position: relative">
+                            <iframe
+                                src="https://player.vimeo.com/video/1101253570?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+                                title="mcp-presentation"
+                            >
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>테스트 데이터 생성 / 렌더링 테스트</h3>
+                    </div>
+                </section>
+
+                <!-- 9. 에러 모니터링 시스템 시퀀스 다이어그램 -->
                 <section>
                     <pre class="mermaid">
 sequenceDiagram
@@ -243,7 +265,7 @@ sequenceDiagram
                     </pre>
                 </section>
 
-                <!-- 9. 시나리오 - 실제 동작 과정 -->
+                <!-- 10. 시나리오 - 실제 동작 과정 -->
                 <section>
                     <h2><span class="emoji-large">🎬</span>흐름별 핵심 코드</h2>
 
@@ -272,7 +294,7 @@ sequenceDiagram
                     </div>
                 </section>
 
-                <!-- 10. 핵심 코드 예제 1 - Tools 정의 -->
+                <!-- 11. 핵심 코드 예제 1 - Tools 정의 -->
                 <section>
                     <h2><span class="emoji-large">🛠️</span>1단계: AI가 사용할 도구들 정의</h2>
 
@@ -302,7 +324,7 @@ this.server.setRequestHandler(ListToolsRequestSchema, async () => {
                     </div>
                 </section>
 
-                <!-- 11. 핵심 코드 예제 2 - 함수 매핑 -->
+                <!-- 12. 핵심 코드 예제 2 - 함수 매핑 -->
                 <section>
                     <h2><span class="emoji-large">🔗</span>2단계: 각 도구별 실제 함수 연결</h2>
 
@@ -328,7 +350,7 @@ this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
                     </div>
                 </section>
 
-                <!-- 12. 핵심 코드 예제 3 - AI 분석 -->
+                <!-- 13. 핵심 코드 예제 3 - AI 분석 -->
                 <section>
                     <h2><span class="emoji-large">🤖</span>3단계: AI에게 분석 요청</h2>
 
@@ -360,7 +382,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                     </div>
                 </section>
 
-                <!-- 13. 3단계 통합 흐름 요약 -->
+                <!-- 14. 3단계 통합 흐름 요약 -->
                 <section>
                     <h2><span class="emoji-large">🎯</span>흐름 요약</h2>
 
@@ -397,7 +419,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                     </div>
                 </section>
 
-                <!-- 14. 메신저 에러 리포팅 결과 -->
+                <!-- 15. 메신저 에러 리포팅 결과 -->
                 <section>
                     <h2><span class="emoji-large">📱</span>메신저 에러 리포팅</h2>
 
@@ -437,7 +459,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                     </div>
                 </section>
 
-                <!-- 15. 실시간 에러 모니터링 -->
+                <!-- 16. 실시간 에러 모니터링 -->
                 <section>
                     <h2><span class="emoji-large">🔗</span>에러 모니터링 최종 Ver.</h2>
 
@@ -472,7 +494,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                     </div>
                 </section>
 
-                <!-- 16. 마무리 - 핵심 메시지 -->
+                <!-- 17. 마무리 - 핵심 메시지 -->
                 <section>
                     <h2><span class="emoji-large">🌟</span>Insights</h2>
 
@@ -496,7 +518,7 @@ const response = await this.server.request(samplingRequest);</code></pre>
                     </div>
                 </section>
 
-                <!-- 17. 질의응답 -->
+                <!-- 18. 질의응답 -->
                 <section>
                     <h2><span class="emoji-large">💬</span>질의응답</h2>
 
@@ -516,6 +538,9 @@ const response = await this.server.request(samplingRequest);</code></pre>
 
         <!-- Mermaid JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+
+        <!-- Vimeo Player JavaScript -->
+        <script src="https://player.vimeo.com/api/player.js"></script>
 
         <!-- Prism.js for syntax highlighting -->
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
